@@ -52,9 +52,9 @@ h1 {
 
 .current-color {
     position: fixed;
-    top: 75%;
+    top: 80%; /* Ajustar el valor para bajarlo */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%); /* Solo mover horizontalmente */
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px 20px;
