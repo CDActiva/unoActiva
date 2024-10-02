@@ -115,42 +115,33 @@ function dealCards(deck) {
 
 // Funciones de actualización de interfaz
 function updateAllHands() {
-    updateHand(domElements.playerHandDom, gameState.playerHand, true);
+    updateHand(domElements.playerHandDom, gameState.playerHand, gameState.currentPlayer === 1);
     updateHand(domElements.cpuHandDom, gameState.cpuHand, false);
     if (gameState.numberOfPlayers === 2) {
-        updateHand(domElements.player2HandDom, gameState.player2Hand, true);
+        updateHand(domElements.player2HandDom, gameState.player2Hand, gameState.currentPlayer === 2);
     }
 }
 
-function updateHand(handDom, hand, isPlayer) {
+function updateHand(handDom, hand, isCurrentPlayer) {
     handDom.innerHTML = '';
     hand.forEach((card, index) => {
         const img = document.createElement('img');
-        img.src = getCardImagePath(card, isPlayer);
+        img.src = getCardImagePath(card, isCurrentPlayer);
         img.id = index;
-        if (isPlayer) {
+        if (isCurrentPlayer) {
             img.addEventListener('click', () => playCard(index, hand));
         }
         handDom.appendChild(img);
     });
 }
 
-function getCardImagePath(card, isPlayer) {
-    if (!isPlayer) return 'images/back.png';
+function getCardImagePath(card, isCurrentPlayer) {
+    if (!isCurrentPlayer) return 'images/back.png';
     return card.color === 'wild' ? `images/wild${card.value}.png` : `images/${card.color}${card.value}.png`;
 }
 
-function updatePlayPile() {
-    const lastCard = gameState.playPile[gameState.playPile.length - 1];
-    domElements.playPileDom.src = getCardImagePath(lastCard, true);
-    domElements.playPileDom.style.borderColor = lastCard.color;
-}
-
 function updateTurnVisuals() {
-    [domElements.playerHandDom, domElements.player2HandDom, domElements.cpuHandDom].forEach(hideHand);
-    const currentHandDom = getCurrentPlayerHandDom();
-    const currentHand = getCurrentPlayerHand();
-    showHand(currentHandDom, currentHand);
+    updateAllHands();
     
     if (gameState.currentPlayer === 3) {
         setTimeout(playCPU, 1000);
@@ -386,23 +377,6 @@ function handleColorSelection(event) {
     changeTurn();
 }
 
-// Funciones auxiliares
-function hideHand(handDom) {
-    const cards = handDom.querySelectorAll('img');
-    cards.forEach(card => {
-        card.src = 'images/back.png';
-    });
-}
-
-function showHand(handDom, hand) {
-    hand.forEach((card, index) => {
-        const img = handDom.querySelector(`[id="${index}"]`);
-        if (img) {
-            img.src = getCardImagePath(card, true);
-        }
-    });
-}
-
 // Mejoras en la lógica del juego
 function isValidPlay(card, lastCard) {
     return card.color === lastCard.color || 
@@ -415,7 +389,7 @@ function executeCardPlay(cardToPlay, index, hand) {
     processCard(cardToPlay);
     gameState.playPile.push(hand.splice(index, 1)[0]);
     updatePlayPile();
-    updateHand(getCurrentPlayerHandDom(), hand, gameState.currentPlayer !== 3);
+    updateAllHands();
     
     if (hand.length === 1) {
         alert(`¡Jugador ${gameState.currentPlayer} dice UNO!`);
@@ -468,7 +442,6 @@ function playCPU() {
     const playableCards = gameState.cpuHand.filter(card => isValidPlay(card, gameState.playPile[gameState.playPile.length - 1]));
 
     if (playableCards.length > 0) {
-        // Estrategia simple: jugar la primera carta válida
         const cardToPlay = playableCards[0];
         const index = gameState.cpuHand.indexOf(cardToPlay);
         executeCardPlay(cardToPlay, index, gameState.cpuHand);
@@ -483,6 +456,7 @@ function playCPU() {
         drawCard(gameState.cpuHand);
     }
 
+    updateAllHands();
     setTimeout(changeTurn, 1000);
 }
 
