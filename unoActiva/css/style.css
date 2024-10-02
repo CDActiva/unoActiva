@@ -5,42 +5,51 @@
   padding: 0;
   box-sizing: inherit;
 }
+
 html {
   font-size: 62.5%;
 }
 
 body {
   box-sizing: border-box;
-  background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(22, 109, 59));
+  background-image: linear-gradient(to bottom right, rgb(54, 51, 51), rgb(22, 109, 59));
   background-size: 100vw 100vh;
   width: 100vw;
   height: 100vh;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: -50px;
-  font-family: 'Avenir Next'
+  margin: 0;
+  font-family: 'Avenir Next';
 }
 
 .cpu-box {
     display: flex;         
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    margin-top: 25px;
 }
-
 
 .play-area {
     display: flex;
     justify-content: space-evenly;
 }
-
-
+.play-area button {
+    background-color: rgba(10, 9, 9, 0.822);  /* Fondo negro */
+    color: white;             /* Texto blanco */
+    padding: 25px 20px;       /* Espaciado interno */
+    border: none;             /* Sin bordes */
+    font-size: 20px;          /* Tamaño del texto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;          /* Cambia el cursor a mano */
+    border-radius: 20px;      /* Bordes ligeramente redondeados */
+    margin-top: 10px;
+}
 
 .score {
     display: flex;
     flex-direction: column;
     margin: auto 0;
-    color: rgb(6, 37,62);
-    font-size: x-large;
+    color: rgb(247, 251, 253);
+    font-size:x-large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 #seperator {
@@ -50,21 +59,22 @@ body {
 
 .player-box {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin-top: 100px;
+    margin-left: 100px;
+}
+.player2-box {
+    display: flex;
+    justify-content: right;
+    margin-top: -100px;
+    margin-right: 100px;
 }
 
-/* .player-hand {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-} */
-
 img {
-    width: 100px;
-    margin-left: -28px;
+    width: 70px; /* tamaño de la carta reducido */
+    margin-left: -18px;
     border-radius: 10px;
-    box-shadow:  -7px -7px 14px #00405c;
+    box-shadow: -7px -7px 14px #00405c;
 }
 
 .player-hand img:hover {
@@ -94,12 +104,12 @@ img {
 }
 
 .player-draw {
-    transform: translateY(260px) translateX(-100px);
+    transform: translateY(200px) translateX(-100px);
     transition: all 0.2s ease-in-out;
 }
 
 .cpu-draw {
-    transform: translateY(-260px) translateX(-100px);
+    transform: translateY(-200px) translateX(-100px);
     transition: all 0.2s ease-in-out;
 }
 
@@ -118,12 +128,12 @@ img {
 }
 
 .play-card {
-    transform: translateY(-260px);
+    transform: translateY(-200px);
     transition: 0.3s ease;
 }
 
 .cpu-play-card {
-    transform: translateY(260px);
+    transform: translateY(200px);
     transition: all 0.1s ease-in;
 }
 
@@ -138,12 +148,7 @@ img {
     box-shadow: none;
 }
 
-.player-animation img {
-    border-radius: 0px;
-    box-shadow: none;
-    transition: all 1s ease-in-out;
-}
-
+.player-animation img,
 .cpu-animation img {
     border-radius: 0px;
     box-shadow: none;
@@ -184,11 +189,7 @@ img {
     opacity: 0.9;
 }
 
-.end-of-round p {
-    color: #00eaff;
-    text-align: center;
-}
-
+.end-of-round p,
 .end-of-game p {
     color: #00eaff;
     text-align: center;
@@ -199,7 +200,6 @@ img {
     color: black;
     margin-left: 14vw;
     margin-top: 10px;
-    
 }
 
 .color-picker {
@@ -224,7 +224,7 @@ button {
     width: 10vw;
     color: white;
     border-radius: 10px;
-    transition: all 0.1s ease-in-out
+    transition: all 0.1s ease-in-out;
 }
 
 button:hover {
@@ -250,21 +250,11 @@ button:hover {
     color: black;
 }
 
-.player-uno img {
-    border-radius: 0px;
-    box-shadow: none;
-}
-
-.cpu-uno img {
-    border-radius: 0px;
-    box-shadow: none;
-}
-
 .empty {
-    width: 100px;
-    margin-left: -28px;
+    width: 70px; /* tamaño de la carta reducido */
+    margin-left: -18px;
     border-radius: 10px;
-    box-shadow:  none;
+    box-shadow: none;
 }
 
 @media (max-width: 812px) {
@@ -278,17 +268,9 @@ button:hover {
         margin-bottom: 10px;
     }
 
-    .play-area {
-        margin-top: 10px;
-    }
-
-    .play-pile img {
-        width: 100px;
-    }
-
+    .play-pile img,
     .draw-pile img {
-        width: 70px;
-        margin-top: 20px;
+        width: 60px; /* tamaño de las cartas reducido */
     }
 
     .score {
@@ -296,11 +278,11 @@ button:hover {
     }
 
     .player-box {
-        margin-top: 10px;
+        margin-top: 10px
     }
-    
+
     img {
-        width: 60px;
+        width: 50px;
         margin-left: 0px;
     }
 
@@ -335,5 +317,4 @@ button:hover {
     .color-picker button {
         height: 20px;
     }
-    
 }

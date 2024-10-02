@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>UNO Activa</title>
+    <title>UNO - Juego</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class='cpu-box'>
@@ -23,10 +23,15 @@
     </div>
     <div class='play-area'>
         <div class='score'>
+            <button id="onePlayer">1 Jugador</button><button id="twoPlayers">2 Jugadores</button>
+            <div id='seperator'></div>
             <p class='cpu-score-title'>CPU: <span id='cpu-score'>249</span></p>
             <div id='seperator'></div>
-            <p class='player-score-title'>JUGADOR: <span id='player-score'>67</span></p>
-            <p class='rules' style="color:#fff;">El primer jugador que consiga 100 puntos, perderá el juego</p>
+            <p class='player-score-title'>Jugador 1: <span id='player-score'>67</span></p>
+            <div id='seperator'></div>
+            <p class='player2-score-title'>Jugador 2: <span id='player-score'>67</span></p>
+            <div id='seperator'></div>
+            <p class='rules' style="color:#fff;">El primer jugador que alcalce los 100 puntos perderá la partida</p>
         </div>
         <div class='play-pile'>
             <img src="images/blue2.png" alt="">
@@ -37,35 +42,45 @@
         <img id="draw-card" class='hidden' src="images/back.png" alt="">
     </div>
     <div class='end-of-round hidden'>
-        <p class='round'>X ganó la ronda!</p>
+        <p class='round'>X ganó la partida!</p>
     </div>
     <div class='end-of-game hidden'>
         <p class='game'>X ganó el juego!</p>
-        <button class='play-again'>A jugar!</button>
+        <button class='play-again'>Otra vez!</button>
     </div>
     <div class='player-box'>
         <div class='player-hand'>
+            <p class='player-title'> Jugador 1
             <img src="images/blue9.png" alt="">
-            <!-- <img src="images/wild14.png" alt="">
-            <img src="images/red1.png" alt="">
-            <img src="images/green3.png" alt="">
-            <img src="images/blue0.png" alt="">
-            <img src="images/red10.png" alt="">
-            <img src="images/yellow11.png" alt=""> -->
         </div>
         <div class='player-animation hidden'>
             <img id='player-uno' src="images/uno!.png" alt="">
         </div>
     </div>
-    <div class='color-picker'>
-        <p>Escoge color:</p>
-        <div>
-            <button class='red'>Rojo</button>
-            <button class='green'>Verde</button>
-            <button class='blue'>Azul</button>
-            <button class='yellow'>Amarillo</button>
+        <div class='player2-box'>
+            <div class='player-hand'>
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+                <img src="images/back.png" alt="">
+            </div>
+            <div class='player-animation hidden'>
+                <img id='player-uno' src="images/uno!.png" alt="">
         </div>
     </div>
-    <script src="js/app.js"></script>
+
+    <div class='color-picker'>
+        <p>Select a color:</p>
+        <div>
+            <button class='red'>Red</button>
+            <button class='green'>Green</button>
+            <button class='blue'>Blue</button>
+            <button class='yellow'>Yellow</button>
+        </div>
+    </div>
+    <script src="Uno.js"></script>
 </body>
-</html> 
+</html>
