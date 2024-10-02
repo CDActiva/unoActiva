@@ -1,0 +1,126 @@
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom right, rgb(54, 51, 51), rgb(22, 109, 59));
+    background-size: 100vw 100vh;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Avenir Next';
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 1.6rem;
+}
+
+.cpu-box, .player-box, .player2-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.play-area {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.current-color {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.game-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.draw-pile img, .play-pile img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.play-area button {
+    background-color: black;
+    color: white;
+    padding: 25px 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.play-area button:hover {
+    background-color: gray;
+}
+
+.player-hand img, .cpu-hand img {
+    width: 70px;
+    margin-left: 10px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.player-hand img:hover, .cpu-hand img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#color-selector {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.color-button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.color-button:hover {
+    background-color: gray;
+}
