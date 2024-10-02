@@ -42,6 +42,7 @@ h1 {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+    color: white;
 }
 
 .play-area {
@@ -90,6 +91,20 @@ h1 {
 
 .play-area button:hover {
     background-color: gray;
+    position: fixed;
+    top: 80%; /* Bajado un poco más */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    color: white; /* Texto blanco */
+    padding: 15px 30px; /* Más espacio para que el botón se vea más grande */
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 1.8rem; /* Tamaño del texto en unidades rem */
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    cursor: pointer; /* Cambia el cursor a mano */
 }
 
 .player-hand img, .cpu-hand img {
@@ -108,8 +123,10 @@ h1 {
 }
 
 #color-selector {
-    text-align: center;
-    margin-top: 20px;
+    text-align: center; /* Centra el texto */
+    margin-top: 10px; /* Margen superior */
+    font-size: 15px; /* Aumenta el tamaño del texto */
+    color: white; /* Cambia el color del texto a blanco */
 }
 
 .color-button {
